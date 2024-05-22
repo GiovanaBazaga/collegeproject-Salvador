@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
+
+* { 
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Oxanium', cursive;
+}
+
+body {
+    background-color: rgba(211, 252, 238, 0.6);
+    min-height: 100vh;
+}
+
+section{
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+form section {
+    min-width: 16%;
+    margin: 2% auto;
+    padding: 2%;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: clamp(9px, 5vw, 1rem);
+    font-weight: 600;
+    color: rgb(15, 14, 14);
+    background-color: #4444;
+    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+    height: 30vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+form input[type=submit]{
+    cursor: pointer;
+}
+form input:focus{
+    background-color: darkgray;
+}
+.button { 
+    width: 100%;
+    padding: 3%;
+    border: 2px solid #000;
+    border-radius: 30px;
+    font-size: clamp(9px, 5vw, 1rem);
+    font-weight: 600;
+    color: rgb(15, 14, 14);
+    background-color: #4444;
+    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+}
+.button:active { 
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+}
