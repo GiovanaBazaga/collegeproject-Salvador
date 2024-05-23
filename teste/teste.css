@@ -1,0 +1,17 @@
+main {
+
+  background-color: aquamarine;
+  text-align: center;
+
+  .columns{
+  display: flex;
+  font-size: 2em;
+  background-color: pink;
+  margin: 80px;
+
+  section {
+    flex: 35%;
+  }
+}
+
+}
