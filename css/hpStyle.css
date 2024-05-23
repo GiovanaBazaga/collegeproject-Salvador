@@ -25,11 +25,20 @@ main {
   background-color: rgba(211, 252, 238, 0.678);
   font-size: 1.15em;
 
-  .form-section {  
+  .logout-btn {
+    text-align: right;
+    button {
+      padding: 5px 15px 5px 15px;
+      border-radius: 5px;     
+      font-size: 0.85em;
+    }
+  }
+
+  .form-section {
     p {
       padding: 10px;
     }
-    
+
     .btn-wrapper {
       text-align: center;
       input {

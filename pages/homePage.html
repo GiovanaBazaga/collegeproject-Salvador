@@ -16,8 +16,10 @@
     <main>
         <div class="form-section">
             <p>Preencha as informações do seu pet!</p>
-            <form action="../php/home.php" method="GET" class="pet-form">
-                <section class="pet-information">
+            
+            <form action="../php/home.php" method="GET" class="pet-form"></form>
+            <div class="form-section">
+                <section class="column">
                     <div class="input-wrapper">
                         <label>Nome</label>
                         <div class="input-content">
@@ -49,7 +51,7 @@
                     </div>
                 </section>
 
-                <section class="appt-information">
+                <section class="column">
                     <p>Preencha as informações da consulta!</p>
                     <div class="input-wrapper">
                         <label for="appointmentDate">Data</label>
@@ -67,8 +69,11 @@
                     </div>
                 </section>
                 <div class="btn-wrapper"><input type="submit" value="Enviar"></div>
-            </form>
-        </div>
+                </form>
+            </div>
+            <div class="logout-btn">
+                <a href="../php/logout.php"><button>Encerrar sessão</button></a>
+            </div>
     </main>
 </body>
 
