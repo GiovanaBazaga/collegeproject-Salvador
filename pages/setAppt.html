@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/ApptStyle.css">
+    <link rel="stylesheet" href="../css/footerStyle.css">
+    <link rel="shortcut icon" href="../images/favicon.webp" type="image/x-icon">
+    <title>Vet</title>
+</head>
+
+<body>
+    <header>
+        <h1>Clínica Veterinária Saúde Pet</h1>
+    </header>
+    <main>
+        <div class="form-section">
+            <p>Preencha as informações do seu pet!</p>
+            
+            <form action="../php/home.php" method="GET" class="pet-form"></form>
+            <div class="form-section">
+                <section class="column">
+                    <div class="input-wrapper">
+                        <label>Nome</label>
+                        <div class="input-content">
+                            <input type="text" name="petName" id="" required>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Tipo de animal</label>
+                        <div class="input-content">
+                            <select name="petType" id="petType" required>
+                                <option value=""></option>
+                                <option value="dog">Cachorro</option>
+                                <option value="cat">Gato</option>
+                                <option value="rabbit">Coelho</option>
+                                <option value="rodents">Roedor</option>
+                                <option value="wild">Silvestre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Sexo</label>
+                        <div class="input-content">
+                            <select name="sex" id="sex" required>
+                                <option value=""></option>
+                                <option value="female">Fêmea</option>
+                                <option value="male">Macho</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="column">
+                    <p>Preencha as informações da consulta!</p>
+                    <div class="input-wrapper">
+                        <label for="appointmentDate">Data</label>
+                        <div class="input-content">
+                            <input type="date" name="apptDate" id="apptDate" required>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="appt">Horário</label>
+                        <div class="input-content">
+                            <input type="time" name="apptTime" id="apptTime" min="8:00" max="18:00" required>
+                            <br>
+                            <small>Atendemos das 8 às 18</small>
+                        </div>
+                    </div>
+                </section>
+                <div class="btn-wrapper"><input type="submit" value="Enviar"></div>
+                </form>
+            </div>
+            <div class="logout-btn">
+                <a href="../php/logout.php"><button>Encerrar sessão</button></a>
+            </div>
+        </main>
+
+        <footer>
+            <div>
+                <p>Projeto idealizado para aula de Aplicações Web do professor Salvador</p>
+            </div>
+            <p>Site feito por:</p>
+            <div class="Gih">
+                <p>Giovana Feijó Bazaga Licassali Cezar</p>
+                <a href="https://www.linkedin.com/in/giovana-bazaga-8ba798249/">Linkedin</a>
+                <a href="https://github.com/GiovanaBazaga">GitHub</a>
+            </div>
+            <div class="Vini">
+                <p>Vinícius Silveira Vianna</p>
+                <a href="https://github.com/ViniSV">GitHub</a>
+            </div>
+        </footer>
+
+</body>
+
+</html>

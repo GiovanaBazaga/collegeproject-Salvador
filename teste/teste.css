@@ -1,29 +1,13 @@
 main {
   background-color: aquamarine;
   text-align: center;
+  display: flex;
 }
 
-.row { 
-  background: pink;
-  border: 1px solid #ccc;
-  overflow: hidden;
-  padding: 10px;
-  text-align: center;
-
-  .column {
-    display: flex;
+form {
+  display: flex;
+  column {
     float: left;
-    width: 50%;
-    background-color:darksalmon;
-    font-size: 1.25em;
-  }
-
-  div.inform{
-    display: flex;
-    float: left;
-    width: 50%;
-    font-size: 1.5em;
+    width: 40%;
   }
 }
-
-
