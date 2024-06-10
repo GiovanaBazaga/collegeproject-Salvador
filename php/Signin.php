@@ -11,14 +11,14 @@ if ($conn->connect_error) {
 }
 
 //Form data client
-$client_name = $_GET['userName'];
-$client_email = $_GET['userEmail'];
-$client_password = $_GET['userPassword'];
-$client_number = $_GET['userNumber'];
-$client_CEP = $_GET['userCEP'];
+$client_name = $_POST['userName'];
+$client_email = $_POST['userEmail'];
+$client_password = $_POST['userPassword'];
+$client_number = $_POST['userNumber'];
+$client_CEP = $_POST['userCEP'];
 
 //Sending client data
-$stmt_cliente = $conn->prepare("INSERT INTO cliente (client_name, client_email, client_password, client_number, client_CEP) VALUES (?, ?, ?, ?, ?)");
+$stmt_cliente = $conn->prepare("INSERT INTO client (name, email, password, number, cep) VALUES (?, ?, ?, ?, ?)");
 $stmt_cliente->bind_param("sssii", $client_name, $client_email, $client_password, $client_number, $client_CEP);
 
 if ($stmt_cliente->execute()) {

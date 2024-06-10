@@ -1,44 +1,81 @@
-<?php 
-session_start();//Inicia uma nova sessão ou resume uma sessão existente 
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-$client_email = $_GET['userEmail'];//obtém o login digitado 
+<body>
+    <?php
+    session_start();
 
-$client_password = $_GET['userPassword'];//obtém a senha digitada 
+    // Verificar se o formulário foi enviado
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Obter os dados do formulário
+        $client_email = $_POST['userEmail'];
+        $client_password = $_POST['userPassword'];
 
- 
-$client_email = $_GET['userEmail'];
-$client_password = $_GET['userPassword'];
-//dados de acesso ao banco 
+        // Configurações do banco de dados
+        $server_name = "localhost";
+        $user_name = "root";
+        $password = "";
+        $database_name = "projetoSalvador";
 
-$server_name = "localhost";
-$user_name = "root";
-$password = "";
-$database_name = "projetoSalvador";
-//conexão ao banco 
-$conn = new mysqli($server_name, $user_name, $password, $database_name);
+        // Conectar ao banco de dados
+        $conn = new mysqli($server_name, $user_name, $password, $database_name);
 
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error . "<br>");
-}
+        // Verificar conexão
+        if ($conn->connect_error) {
+            die("Conexão falhou: " . $conn->connect_error . "<br>");
+        }
 
-$tenta_achar = "SELECT * FROM cliente WHERE client_email='$client_email' AND client_password='$client_password'" ; 
-$resultado = $conn->query($tenta_achar); 
+        // Consulta SQL para verificar as credenciais
+        $sql = "SELECT id, password FROM client WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Erro na preparação: " . $conn->error);
+        }
 
-if ($resultado->num_rows > 0) { 
-    $_SESSION['userEmail'] = $client_email; 
-    $_SESSION['userPassword'] = $client_password; 
-    header('location:../pages/homePage.html');//redireciona para a página de acesso 
-} 
+        // Bind do parâmetro
+        $stmt->bind_param("s", $client_email);
 
-else{ 
-    session_unset();//remove todas as variáveis de sessão 
-    session_destroy();//destroi a sessão 
+        // Executar a consulta
+        $stmt->execute();
+        $stmt->bind_result($user_id, $db_password);
+        $stmt->fetch();
 
-    echo "<script>  
-            alert('Login ou senha incorreto'); 
-            window.location.href = '../pages/login.html'; 
-        </script>"; 
-  } 
-?>
+        // Adicione depuração
+        error_log("Email enviado: $client_email");
+        error_log("Senha enviada: $client_password");
+        error_log("ID do usuário encontrado: $user_id");
+        error_log("Senha do banco de dados: $db_password");
+
+        // Verificar se o usuário existe e se a senha está correta
+        if ($user_id && $client_password === $db_password) {
+            // Armazenar o ID do usuário na sessão
+            $_SESSION['user_id'] = $user_id;
+            header('Location: ../pages/homePage.html'); // Redirecionar para a página de acesso
+            exit();
+        } else {
+            session_unset(); // Remove todas as variáveis de sessão
+            session_destroy();
+
+            echo "<script>
+                alert('Login ou senha incorreto');
+                window.location.href = '../pages/login.html';
+              </script>";
+        }
+
+        // Fechar a declaração e a conexão
+        $stmt->close();
+        $conn->close();
+    } else {
+        echo "Método de requisição inválido.";
+    }
+    ?>
+
+</body>
+
+</html>
