@@ -26,6 +26,9 @@ if ($stmt_cliente->execute()) {
 } else {
     echo "Não foi possível inserir os dados do cliente no nosso banco de dados, por favor confira os dados informados!" . $stmt_cliente->error . "<br>";
 }
+
+echo '<a class="button" href="../pages/index.html">Login</a>';
+
 $stmt_cliente->close();
 $conn->close();
 ?>
